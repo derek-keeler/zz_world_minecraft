@@ -101,7 +101,7 @@ docker when you aren't playing.
 >
 > ```bash
 > docker run --name mc_over \
-> --rm -e MINECRAFT_VERSION="1.17" \
+> --rm -e MINECRAFT_VERSION="<latest-version>" \ # you can obtain this from the Minecraft server download site...
 > -v C:\Minecraft\${WORLD_NAME}:/home/minecraft/server/${WORLD_NAME}/:ro
 > -v C:\Minecraft\Render:/home/minecraft/render:rw
 > mide/minecraft-overviewer:latest
