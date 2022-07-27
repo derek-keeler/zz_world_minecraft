@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/openjdk/jdk:17-ubuntu
 
 # Override when the server binary is updated, if necessary
-ARG MINECRAFT_SERVER_DOWNLOAD="https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar"
+ARG MINECRAFT_SERVER_DOWNLOAD="https://piston-data.mojang.com/v1/objects/8399e1211e95faa421c1507b322dbeae86d604df/server.jar"
 ARG MINECRAFT_SERVER_VERSION="1.19"
 ARG WORLD_NAME="ZZWorld"
 ARG ACCEPT_EULA=false
