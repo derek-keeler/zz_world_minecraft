@@ -1,0 +1,30 @@
+services:
+
+  # docker run -it -v E:\Minecraft\worlds:/minecraft --env MC_WORLD_NAME=Zoe --name mc_zoe_1201 -p 25565:25565 local/zz_minecraft_world:1.20.1
+  mc_zoe:
+    image: local/zz_minecraft_world:latest
+    ports:
+      - 127.0.0.1:25565:25565
+    volumes:
+      - E:\Minecraft\worlds:/minecraft
+    environment:
+      - MC_WORLD_NAME=Zoe
+
+  # docker run --name dadmap_1201 -e MINECRAFT_VERSION="1.20.1" -e RENDER_SIGNS_HIDE_FILTER=true -v E:\Minecraft\worlds\Dad\Dereks_World_Party_Time_Excellent:/home/minecraft/server/world/:ro -v E:\Minecraft\render\DadMap:/home/minecraft/render:rw mide/minecraft-overviewer:latest
+  # docker run -it -v E:\Minecraft\worlds\Dad:/minecraft --name mc_dad_1201 -p 1272:25565 local/zz_minecraft_world:1.20.1
+  mc_dad:
+    image: local/zz_minecraft_world:latest
+    ports:
+      - 127.0.0.1:1272:25565
+    volumes:
+      - E:\Minecraft\worlds\Dad:/minecraft
+
+  # docker run -it -v E:\Minecraft\worlds:/minecraft --env MC_WORLD_NAME=DaddioII --name mc_daddio_1201 -p 1818:25565 local/zz_minecraft_world:1.20.1
+  mc_daddioII:
+    image: local/zz_minecraft_world:latest
+    ports:
+      - 127.0.0.1:1818:25565
+    volumes:
+      - E:\Minecraft\worlds:/minecraft
+    environment:
+      - MC_WORLD_NAME=DaddioII
