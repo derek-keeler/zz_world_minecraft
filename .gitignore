@@ -127,3 +127,4 @@ dmypy.json
 # VSCode debugging and settings are machine specific, let's not check them in.
 .vscode/launch.json
 .vscode/settings.json
+.azure
