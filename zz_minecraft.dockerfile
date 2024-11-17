@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/openjdk/jdk:17-ubuntu
+FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
 
 # Override when the server binary is updated, if necessary
 # See: https://www.minecraft.net/en-us/download/server
@@ -38,4 +38,3 @@ WORKDIR /home/minecraft
 
 # Run this command:
 ENTRYPOINT ["/bin/bash", "-c", "java -Xmx2048M -Xms2048M -jar server.jar --bonusChest --universe /minecraft --world /minecraft/${MC_WORLD_NAME} --nogui"]
-
