@@ -23,16 +23,21 @@ LABEL Author="Derek Keeler <34773432+derek-keeler@users.noreply.github.com>"
 RUN apt-get -qq update && \
     apt-get -qq upgrade -y && \
     apt-get -qq install wget -y && \
-    groupadd unminer && \
-    useradd -g unminer -d /home/unminer -m -s /bin/bash unminer && \
+    groupadd --gid 1000 unminer && \
+    useradd --uid 1000 -g unminer -d /home/unminer -m -s /bin/bash unminer && \
     wget ${UNMINED_CLI_DOWNLOAD} -O /home/unminer/unmined-cli.tar.gz && \
     tar -xvzf /home/unminer/unmined-cli.tar.gz -C /home/unminer/ --transform 's!^[^/]*!unminer-cli!' && \
+    rm /home/unminer/unmined-cli.tar.gz && \
+    chown -R unminer:unminer /home/unminer && \
+    chmod -R a-rwx,u+rx /home/unminer/unminer-cli && \
+    chmod -R u+w /home/unminer/unminer-cli/config && \
     mkdir /world /web
+
 
 # Run as our special non-root 'minecraft' user
 USER unminer
 
-WORKDIR /home/unminer/unminer-cli
+WORKDIR /home/unminer
 
 ## INPUT files (Minecraft world files)
 #
@@ -57,11 +62,17 @@ WORKDIR /home/unminer/unminer-cli
 #
 # docker run <other_options> -v C:\Minecraft\web:/web <other_options> ...
 
-ENTRYPOINT [ "unminer-cli", \
-    "web render", \
-    "--world=/world", \
-    "--output=/web", \
-    "--players", \
-    "--zoomin 3", \
-    "--shadows 3do", \
-    "--log-level verbose" ]
+# ENTRYPOINT [ "unminer-cli", \
+#     "web render", \
+#     "--world=/world", \
+#     "--output=/web", \
+#     "--players", \
+#     "--zoomin 3", \
+#     "--shadows 3do", \
+#     "--log-level verbose" ]
+
+ENTRYPOINT ["/bin/bash"]
+# 
+# unminer-cli/unmined-cli web render --world=/world --output=/web/night --night=true --players --zoomin 3 --shadows 3d --log-level verbose
+# unminer-cli/unmined-cli web render --world=/world --output=/web/nether --dimension=nether --players --zoomin 3 --shadows 3d --log-level verbose
+# unminer-cli/unmined-cli web render --world=/world --output=/web --players --zoomin 3 --shadows 3d --log-level verbose
