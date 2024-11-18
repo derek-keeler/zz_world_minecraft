@@ -94,7 +94,7 @@ def do_download(mc_url: str, mc_sha1: str) -> None:
     urllib.request.urlretrieve(mc_url, "server.jar")
     print("Done.")
 
-    print(f"Verifying SHA1 checksum...")
+    print("Verifying SHA1 checksum...")
     with open("server.jar", "rb") as f:
         data = f.read()
         sha1 = hashlib.sha1(data).hexdigest()
