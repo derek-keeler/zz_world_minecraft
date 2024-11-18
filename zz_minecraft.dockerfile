@@ -11,13 +11,10 @@ LABEL Author="Derek Keeler <34773432+derek-keeler@users.noreply.github.com>"
 
 RUN apt-get -qq update && \
     apt-get -qq upgrade -y && \
-    apt-get -qq install -y --no-install-recommends aptitude && \
-    apt-get -qq install -y --no-install-recommends vim && \
     apt-get -qq install -y --no-install-recommends wget && \
     apt-get -qq install -y gnupg && \
-    apt-get -qq install -y sudo && \
     groupadd minecraft && \
-    useradd -g minecraft -G sudo -d /home/minecraft -m -s /bin/bash minecraft && \
+    useradd -g minecraft -d /home/minecraft -m -s /bin/bash minecraft && \
     wget ${MINECRAFT_SERVER_DOWNLOAD} -O /home/minecraft/server.jar && \
     echo "#$(date)" > /home/minecraft/eula.txt && \
     echo "eula=${ACCEPT_EULA}" >> /home/minecraft/eula.txt 
