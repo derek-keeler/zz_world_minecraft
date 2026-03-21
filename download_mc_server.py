@@ -47,7 +47,7 @@ def get_minecraft_download_url(mc_version: str, manifest_url: str):
 
     download_url = data["downloads"]["server"]["url"]
     download_sha = data["downloads"]["server"]["sha1"]
-    return download_url, download_sha
+    return download_url, download_sha, get_version
 
 
 def build_arguments() -> None:
@@ -109,13 +109,14 @@ def do_download(mc_url: str, mc_sha1: str) -> None:
 if __name__ == "__main__":
     args = build_arguments()
 
-    url, sha1 = get_minecraft_download_url(
+    url, sha1, ver = get_minecraft_download_url(
         mc_version=args.minecraft_version, manifest_url=args.manifest_url
     )
 
     # Print out URL for consumption by another program.
     print(f"Download URL: {url}")
     print(f"SHA1: {sha1}")
+    print(f"Version: {ver}")
 
     if args.download:
         do_download(url, sha1)
