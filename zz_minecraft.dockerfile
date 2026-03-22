@@ -2,8 +2,8 @@ FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
 
 # Override when the server binary is updated, if necessary
 # See: https://www.minecraft.net/en-us/download/server
-ARG MINECRAFT_SERVER_DOWNLOAD="https://piston-data.mojang.com/v1/objects/05e4b48fbc01f0385adb74bcff9751d34552486c/server.jar"
-ARG MINECRAFT_SERVER_VERSION="1.21.7"
+ARG MINECRAFT_SERVER_DOWNLOAD="https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar"
+ARG MINECRAFT_SERVER_VERSION="1.21.11"
 ARG WORLD_NAME="ZZWorld"
 ARG ACCEPT_EULA=false
 ARG MC_USER_UID=1000
@@ -41,3 +41,4 @@ WORKDIR /home/minecraft
 
 # Run this command:
 ENTRYPOINT ["/bin/bash", "-c", "java -Xmx2048M -Xms2048M -jar server.jar --bonusChest --universe /minecraft --world /minecraft/${MC_WORLD_NAME} --nogui"]
+
