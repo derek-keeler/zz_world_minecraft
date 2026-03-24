@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/openjdk/jdk:25-azurelinux
+FROM mcr.microsoft.com/openjdk/jdk:25-ubuntu
 
 # Override when the server binary is updated, if necessary
 # See: https://www.minecraft.net/en-us/download/server
@@ -12,11 +12,8 @@ LABEL Author="Derek Keeler <34773432+derek-keeler@users.noreply.github.com>"
 
 RUN apt-get -qq update && \
     apt-get -qq upgrade -y && \
-    apt-get -qq install -y --no-install-recommends aptitude && \
-    apt-get -qq install -y --no-install-recommends vim && \
     apt-get -qq install -y --no-install-recommends wget && \
     apt-get -qq install -y gnupg && \
-    apt-get -qq install -y sudo && \
     apt-get autoremove -y -q && \
     apt-get clean -y -q && \
     groupadd minecraft && \
