@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
+FROM mcr.microsoft.com/openjdk/jdk:25-azurelinux
 
 # Override when the server binary is updated, if necessary
 # See: https://www.minecraft.net/en-us/download/server
