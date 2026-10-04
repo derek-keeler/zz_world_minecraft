@@ -83,7 +83,7 @@ specs for the game).
 Once built, to run this service, use (on Windows):
 
 ```bash
-docker run -v C:\Minecraft\Universe:/minecraft --name mc_zzworld -p 25565:25565 -p 2222:22 zz_minecraft:0.0.1
+docker run -v C:\Minecraft\Universe:/minecraft --name mc_zzworld -p 25565:25565 zz_minecraft:0.0.1
 ```
 
 This will store the universe files for Minecraft on the path `C:\Minecraft\Universe`,
