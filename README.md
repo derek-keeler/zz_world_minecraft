@@ -68,6 +68,16 @@ specs for the game).
     the end user license agreement. If you do not specify this, you will have to
     edit the /home/minecraft/eula.txt file by using the `docker cp` command.
 
+    **Specify UID/GID**
+
+    ```bash
+    --build-arg MC_USER_UID=<UID> --build-arg MC_GROUP_GID=<GID>
+    ```
+
+    Issue either of these to specify the group/user ID that the container will run
+    as. Default is 1000 for both. (Use this if you have an unprivileged user on your
+    host machine that only has access to exactly what they need and that alone).
+
 ## Running the Container
 
 Once built, to run this service, use (on Windows):

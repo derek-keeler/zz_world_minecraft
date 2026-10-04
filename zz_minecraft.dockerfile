@@ -2,11 +2,12 @@ FROM mcr.microsoft.com/openjdk/jdk:25-ubuntu
 
 # Override when the server binary is updated, if necessary
 # See: https://www.minecraft.net/en-us/download/server
-ARG MINECRAFT_SERVER_DOWNLOAD="https://piston-data.mojang.com/v1/objects/823e2250d24b3ddac457a60c92a6a941943fcd6a/server.jar"
-ARG MINECRAFT_SERVER_VERSION="26.2"
+ARG MINECRAFT_SERVER_DOWNLOAD="https://piston-data.mojang.com/v1/objects/33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c/server.jar"
+ARG MINECRAFT_SERVER_VERSION="26.3"
 ARG WORLD_NAME="ZZWorld"
 ARG ACCEPT_EULA=false
 ARG MC_USER_UID=1000
+ARG MC_GROUP_GID=1000
 
 LABEL Author="Derek Keeler <34773432+derek-keeler@users.noreply.github.com>"
 
@@ -16,8 +17,8 @@ RUN apt-get -qq update && \
     apt-get -qq install -y gnupg && \
     apt-get autoremove -y -q && \
     apt-get clean -y -q && \
-    groupadd minecraft && \
-    useradd -g minecraft -G sudo -d /home/minecraft -m -s /bin/bash minecraft -u ${MC_USER_UID} && \
+    groupadd -g ${MC_GROUP_GID} minecraft && \
+    useradd -g minecraft -d /home/minecraft -m -s /bin/bash minecraft -u ${MC_USER_UID} && \
     wget ${MINECRAFT_SERVER_DOWNLOAD} -O /home/minecraft/server.jar && \
     echo "#$(date)" > /home/minecraft/eula.txt && \
     echo "eula=${ACCEPT_EULA}" >> /home/minecraft/eula.txt 
