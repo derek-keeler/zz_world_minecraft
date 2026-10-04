@@ -30,7 +30,7 @@ ENV MC_VERSION=${MINECRAFT_SERVER_VERSION}
 USER minecraft
 
 # Ports for minecraft server
-EXPOSE 25255/tcp
+EXPOSE 25565/tcp
 EXPOSE 25565/udp
 
 # ...be sure to run with `docker run -p <host-port>:<EXPOSE-port>`, one entry for each EXPOSEd port above
